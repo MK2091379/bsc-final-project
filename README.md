@@ -1,23 +1,99 @@
-# Final Thesis: Multi-Threaded Network Socket Communication System
+# Final Thesis: Secure Data Transmission & Compression System
 
-## Description
-This repository contains a modular network communication system implemented in Python, demonstrating reliable client-server data exchange and stream handling via standard network sockets. The system separates the transmission pipeline into dedicated sending and receiving endpoints with concurrent listener loops, payload serialization, and an integrated graphical user interface (GUI) for interactive endpoint management and real-time message/data streaming.
+A comprehensive research thesis implementation focused on secure, bandwidth-efficient end-to-end communication architectures. This system integrates information-theoretic lossless data compression (**Huffman Coding**) with symmetric cryptographic primitives (**AES** and **One-Time Pad**) over custom TCP network sockets, featuring an interactive desktop GUI and empirical benchmarking modules to analyze throughput, computational latency, and entropy metrics.
 
-## Technologies Used
-- Python
-- Socket Programming (TCP/IP Network Sockets)
-- Multi-threading & Concurrency (`threading`)
-- Tkinter GUI Framework
-- Stream Serialization & Packet Encoding
+---
 
-## Repository Structure
-- `GUI.py`: Interactive Graphical User Interface managing visual endpoint configuration (IP address and port binding), connection status monitoring, and real-time message display.
-- `Sending.py`: Transmitter/Client module managing socket creation, target host connection, data serialization, and outbound packet streaming.
-- `Receiving.py`: Receiver/Server module managing socket listening, incoming connection polling, packet buffering, and payload decoding.
+## 🛠 Tech Stack
 
-## Execution
+- **Language & Runtime:** Python 3.8+
+- **Cryptographic Primitives:** Advanced Encryption Standard (AES), One-Time Pad (OTP), `pycryptodome`
+- **Information Theory:** Huffman Coding (Prefix-Free Trees, Bit-Level Serialization, Frequency Analysis)
+- **Networking:** TCP/IP Socket Programming (Client-Server Architecture)
+- **GUI & Visualization:** Tkinter / Desktop UI Framework
+
+---
+
+## 📁 Repository Structure
+
+### 📦 System Architecture & Core Modules (`FinalProjApp/`)
+
+| Script / Artifact | Module Type | Core Functionality & Responsibilities |
+| :--- | :--- | :--- |
+| `GUI.py` | **User Interface** | Unified desktop dashboard for cipher configuration, tree encoding, and transmission controls |
+| `Sending.py` | **Transmitter Node** | Source encoding pipeline, Huffman compression, cipher generation, and socket packet dispatch |
+| `Receiving.py` | **Receiver Daemon** | Socket listener daemon, inverse decryption, prefix tree reconstruction, and payload restoration |
+| `HuffmanCodingTest.py` | **Verification Suite** | Automated unit test suite assessing compression ratios, bit serialization, and round-trip data fidelity |
+| `AES_vs_OTP.py` | **Benchmarking Engine** | Comparative analysis suite evaluating execution latency, computational overhead, and entropy |
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
-Ensure Python 3.x is installed with standard networking and GUI libraries:
+- [Python 3.8+](https://www.python.org/downloads/)
+
+### Installation
+Clone the repository and install the necessary cryptographic dependencies:
+
 ```bash
-python --version
+# Clone the repository
+git clone <repository_url>
+cd <repository_name>
+
+# Install required packages
+pip install pycryptodome
+```
+
+---
+
+## 🧪 Execution Guide
+
+### 1. Interactive Desktop Dashboard (GUI)
+Launch the unified graphical interface to configure encryption algorithms, tune compression parameters, and inspect packet dispatch visually:
+
+```bash
+cd FinalProjApp
+python GUI.py
+```
+
+---
+
+### 2. CLI Socket Transmission Pipeline
+Simulate secure network communication by launching the receiver daemon before dispatching encrypted payloads:
+
+#### Terminal 1: Receiver Node (Daemon)
+```bash
+cd FinalProjApp
+
+# Start the socket listener daemon
+python Receiving.py
+```
+
+#### Terminal 2: Transmitter Node (Sender)
+```bash
+cd FinalProjApp
+
+# Compress, encrypt, and transmit data payload
+python Sending.py
+```
+
+---
+
+### 3. Compression Verification & Performance Benchmarking
+Execute standalone empirical benchmarks and verification suites:
+
+```bash
+cd FinalProjApp
+
+# Validate Huffman coding fidelity and compression efficiency
+python HuffmanCodingTest.py
+
+# Benchmark AES vs. OTP execution latency and computational overhead
+python AES_vs_OTP.py
+```
+
+---
+
+## 📜 Academic Disclaimer
+The source code and benchmarking models in this repository are maintained for research, portfolio, and educational reference purposes.
